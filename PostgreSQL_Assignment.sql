@@ -103,4 +103,17 @@ LEFT JOIN enrollment e ON c.course_id = e.course_id
 GROUP BY c.course_name
 ORDER BY c.course_name; 
 
+#### Query 7:
+--Calculate and display the average age of all students.
+SELECT AVG(age) AS average_age
+FROM students;
+
+
+#### Query 8:
+--Retrieve the names of students whose email addresses contain 'example.com'.
+SELECT student_name
+FROM students
+WHERE email LIKE '%example.com%';
+
+
 
