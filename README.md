@@ -117,14 +117,12 @@ GROUP BY group_column;
 ## Usage
 
 1. Connect to your PostgreSQL database.
-
 2. Run the SQL queries as needed to interact with the data.
 
 
 ## License
-
 This project is licensed under the MIT License.
 
 
 ## Acknowledgments
-['PostgreSQL Documentation'](https://www.postgresql.org/docs/)
+[PostgreSQL Documentation](https://www.postgresql.org/docs/)
