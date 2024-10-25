@@ -112,3 +112,19 @@ GROUP BY group_column;
 ```
 
 2. Open your PostgreSQL client and execute the SQL scripts provided in the repository to set up the database and tables.
+
+
+## Usage
+
+1. Connect to your PostgreSQL database.
+
+2. Run the SQL queries as needed to interact with the data.
+
+
+## License
+
+This project is licensed under the MIT License.
+
+
+## Acknowledgments
+['PostgreSQL Documentation'](https://www.postgresql.org/docs/)
