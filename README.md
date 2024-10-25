@@ -84,12 +84,31 @@ This project is a simple database management system for a university that utiliz
    The JOIN operation combines rows from two or more tables based on related columns between them. This allows for retrieving related
    data from multiple tables in a single query. Common types of joins include `INNER` `JOIN`, `LEFT` `JOIN`, `RIGHT` `JOIN`, and `FULL` `JOIN`.
 
-9. Explain the GROUP BY clause and its role in aggregation operations.
+9. **Explain the GROUP BY clause and its role in aggregation operations.**
    The `GROUP` BY clause groups rows that have the same values in specified columns into summary rows. It is often used with aggregate functions (like `COUNT`, `SUM`, `AVG`) to perform calculations on each group.
 
-10. How can you calculate aggregate functions like COUNT, SUM, and AVG in PostgreSQL?
+10. **How can you calculate aggregate functions like COUNT, SUM, and AVG in PostgreSQL?**
     Aggregate functions can be applied to a set of values to return a single value. For example:
-```bash SELECT COUNT(*), SUM(column_name), AVG(column_name)
+
+```bash
+SELECT COUNT(*), SUM(column_name), AVG(column_name)
 FROM table_name
 GROUP BY group_column;
 ```
+
+11. **What is the purpose of an index in PostgreSQL, and how does it optimize query performance?**
+    An index improves the speed of data retrieval operations on a database table by providing a quick lookup capability. It allows the database engine to find rows faster without scanning the entire table, optimizing query performance.
+
+12. **Explain the concept of a PostgreSQL view and how it differs from a table.**
+    A view is a virtual table based on the result of a SQL query. It does not store data itself but presents data from one or more tables. Views can simplify complex queries and provide a layer of security by restricting access to specific rows and columns. Unlike a table, views do not store physical data but rather query the underlying tables each time they are accessed.
+
+## Installation
+
+1.  Clone the repository:
+
+```bash
+   https://github.com/Kamrulthedev/PostgreSQL_Assignment
+   cd university_db
+```
+
+2. Open your PostgreSQL client and execute the SQL scripts provided in the repository to set up the database and tables.
