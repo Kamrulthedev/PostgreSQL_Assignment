@@ -1,5 +1,6 @@
 -- Active: 1729741556078@@127.0.0.1@5432@university_db
 
+#### Query 1:
 --### Table Creation
 -- Create Students Table
 CREATE TABLE students (
@@ -53,15 +54,53 @@ SELECT * FROM courses;
 
 -- Enroll student
 INSERT INTO enrollment (student_id, course_id)
-VALUES (1, 1);
+VALUES (3, 4);
 
 -- Check all enrollment data
 SELECT * FROM enrollment;
 
-
+#### Query 2:
 -- Query to retrieve names of students enrolled in 'Next.js'
 SELECT s.student_name
 FROM students s
 JOIN enrollment e ON s.student_id = e.student_id
 JOIN courses c ON e.course_id = c.course_id
 WHERE c.course_name = 'Next.js';
+
+#### Query 3:
+-- Update the status of the student with the highest total (`frontend_mark + backend_mark`) to 'Awarded'.
+UPDATE students
+SET status = 'Awarded'
+WHERE student_id = (
+    SELECT student_id
+    FROM students
+    ORDER BY (frontend_mark + backend_mark) DESC
+    LIMIT 1
+);
+
+#### Query 4:
+-- Delete all courses that have no students enrolled
+DELETE FROM courses
+WHERE course_id IN (
+    SELECT c.course_id
+    FROM courses c
+    LEFT JOIN enrollment e ON c.course_id = e.course_id
+    WHERE e.student_id IS NULL
+);
+
+#### Query 5:
+-- Retrieve names of students, limiting to 2, starting from the 3rd student
+SELECT student_name
+FROM students
+ORDER BY student_id 
+LIMIT 2 OFFSET 2;    
+
+#### Query 6:
+--Retrieve the course names and the number of students enrolled in each course.
+SELECT c.course_name, COUNT(e.student_id) AS students_enrolled
+FROM courses c
+LEFT JOIN enrollment e ON c.course_id = e.course_id
+GROUP BY c.course_name
+ORDER BY c.course_name; 
+
+
