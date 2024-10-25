@@ -3,14 +3,65 @@
 ## Description
 This project is a simple database management system for a university that utilizes PostgreSQL. It includes functionalities to manage students, courses, and enrollments, allowing users to perform various operations such as creating, reading, updating, and deleting data.
 
+## Features
+- **Student Management**: Add, update, and delete student records.
+- **Course Management**: Add, update, and delete courses.
+- **Enrollment Management**: Enroll students in courses and manage enrollments.
+- **Query Capabilities**: Retrieve data with various queries, including counts, averages, and filters.
 
-1. What is PostgreSQL?
+## Database Setup
+1. Install PostgreSQL on your system if not already installed.
+2. Create a new database titled `university_db`.
 
-PostgreSQL is a powerful, open-source relational database management system (RDBMS) that is designed to handle a wide range of workloads, from small single-machine applications to large internet-facing applications with many concurrent users. It is known for its robustness, extensibility, and compliance with SQL standards. PostgreSQL supports advanced data types and performance optimization features, making it a popular choice for developers and businesses. Its key features include:
+## Tables
+### Students Table
+- `student_id (Primary Key)`: Integer, unique identifier for students.
+- `student_name`: String, representing the student's name.
+- `age`: Integer, indicating the student's age.
+- `email`: String, storing the student's email address.
+- `frontend_mark`: Integer, indicating the student's frontend assignment marks.
+- `backend_mark`: Integer, indicating the student's backend assignment marks.
+- `status`: String, storing the student's result status.
 
-ACID Compliance: Ensures reliable transactions and data integrity.
-Support for Advanced Data Types: Includes JSON, XML, hstore, and more.
-Extensibility: Allows users to create custom data types, operators, and functions.
-Concurrency: Implements Multi-Version Concurrency Control (MVCC) to handle multiple transactions without locking the database.
-Rich Ecosystem: Supports various programming languages and has a large community contributing to its development.
-Overall, PostgreSQL is favored for its flexibility, performance, and reliability, making it suitable for a variety of applications and industries.
+### Courses Table
+- `course_id (Primary Key)`: Integer, unique identifier for courses.
+- `course_name`: String, indicating the course's name.
+- `credits`: Integer, signifying the number of credits for the course.
+
+### Enrollment Table
+- `enrollment_id (Primary Key)`: Integer, unique identifier for enrollments.
+- `student_id (Foreign Key)`: Integer, referencing `student_id` in the "Students" table.
+- `course_id (Foreign Key)`: Integer, referencing `course_id` in the "Courses" table.
+
+## Queries
+- **Retrieve student names with specific criteria.**
+- **Calculate averages and totals.**
+- **Update and delete records as needed.**
+
+## Questions and Answers
+1. **What is PostgreSQL?**
+   PostgreSQL is a powerful, open-source relational database management system (RDBMS) designed to handle a wide range of workloads, from small single-machine applications to large internet-facing applications. It is known for its robustness, extensibility, and compliance with SQL standards.
+
+2. **What is the purpose of a database schema in PostgreSQL?**
+   A database schema is a blueprint of how the database is structured. It defines the tables, the fields in each table, the relationships between tables, and other database objects. Schemas help organize database objects and manage permissions and security.
+
+3. **Explain the primary key and foreign key concepts in PostgreSQL.**
+   - A **primary key** is a unique identifier for each record in a table, ensuring that no two rows can have the same primary key value. 
+   - A **foreign key** is a field (or a collection of fields) in one table that uniquely identifies a row in another table. It creates a relationship between the two tables, enforcing referential integrity.
+
+4. **What is the difference between the VARCHAR and CHAR data types?**
+   - **VARCHAR** (variable character) is a data type that allows for strings of variable length. It uses only as much space as needed.
+   - **CHAR** (character) is a fixed-length data type. If the input string is shorter than the specified length, it is padded with spaces.
+
+5. **Explain the purpose of the WHERE clause in a SELECT statement.**
+   The `WHERE` clause filters records returned by a `SELECT` statement, allowing only those that meet specified conditions to be included in the result set.
+
+6. **What are the LIMIT and OFFSET clauses used for?**
+   The `LIMIT` clause restricts the number of rows returned by a query, while the `OFFSET` clause skips a specified number of rows before starting to return rows from the query result. This is useful for pagination.
+
+7. **How can you perform data modification using UPDATE statements?**
+   The `UPDATE` statement modifies existing records in a table. You specify the table to update, the columns to change, and a `WHERE` clause to define which records should be updated.
+   ```sql
+   UPDATE table_name
+   SET column1 = value1, column2 = value2
+   WHERE condition;
